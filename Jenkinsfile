@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'xcodebuild -scheme "TimeTable" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 6,OS=10.1" -enableCodeCoverage YES | /usr/local/bin/xcpretty -r junit' 
+                sh 'xcodebuild -scheme "TimeTable" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 6,OS=11.1” -enableCodeCoverage YES | /usr/local/bin/xcpretty -r junit' 
             }
         }
         stage('Test'){
