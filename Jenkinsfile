@@ -1,4 +1,5 @@
-node('iOS Node') {
+pipeline {
+    agent any
 
     stage('Checkout/Build/Test') {
 
