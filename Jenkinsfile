@@ -4,13 +4,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'make' 
+                sh 'xcodebuild -scheme "TimeTable" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 6,OS=10.1" -enableCodeCoverage YES | /usr/local/bin/xcpretty -r junit' 
             }
         }
         stage('Test'){
             steps {
-                sh 'make check'
-                junit 'reports/**/*.xml' 
+                step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: 'build/reports/junit.xml']) 
             }
         }
         stage('Deploy') {
