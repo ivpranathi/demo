@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+stages {
     stage('Checkout/Build/Test') {
 
         // Checkout files.
@@ -42,4 +42,4 @@ pipeline {
         }, failFast: true|false   
     }
 
-}
+}}
